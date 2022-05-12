@@ -296,8 +296,9 @@ input[data-error]::after {
   left: 21%;
   top: 19%;
 }
-.erreur {
-  color: red;
+#erreur {
+  font-size: 14px;
+  color: #fe142f;
 }
 .close {
   position: absolute;
