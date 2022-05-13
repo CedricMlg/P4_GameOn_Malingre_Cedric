@@ -33,6 +33,7 @@ modalForm.addEventListener("submit", (e) => {
   let nom = document.getElementById("last").value;
   let email = document.getElementById("email").value;
   let date = document.getElementById("birthdate").value;
+  const mailReg = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
   let participe = document.getElementById("quantity").value;
   let erreur = document.getElementById("erreur");
   canSubmit = "true";
@@ -43,27 +44,43 @@ modalForm.addEventListener("submit", (e) => {
     formPrenom.setAttribute("data-error-visible", "true");
     canSubmit = "false";
   }
+  else {
+    formPrenom.setAttribute("data-error-visible", "false");
+  }
   if (nom.length < 4) {
     alert("Veuillez renseigner un nom de plus de trois caractères.");
     formNom.setAttribute("data-error-visible", "true");
     canSubmit = "false";
   }
-  if (email.length < 1 || /[a-z0-9_\-\.]+@[a-z0-9_\-\.]+\.[a-z]+/i.test(email)) {
+  else {
+    formNom.setAttribute("data-error-visible", "false");
+  }
+  if (email.length < 1 || email.match(mailReg)) {
     alert("Veuillez renseigner une adresse email valide.");
     formMail.setAttribute("data-error-visible", "true");
     canSubmit = "false";
   }
-  if (isNaN(date) || date < 1 || date > 100) {
-    alert("Veuillez renseigner un age entre 1 et 100 ans.");
+  else {
+    formMail.setAttribute("data-error-visible", "false");
+  }
+  if (date == "") {
+    alert("Veuillez renseigner votre date de naissance");
     formDate.setAttribute("data-error-visible", "true");
     canSubmit = "false";
+  }
+  else {
+    formDate.setAttribute("data-error-visible", "false");
   }
   if (isNaN(participe) || participe < 0 || participe > 99) {
     alert("Veuillez renseigner un nombre de participations entre 0 et 99.");
     formParticipe.setAttribute("data-error-visible", "true");
     canSubmit = "false";
   }
+  else {
+    formParticipe.setAttribute("data-error-visible", "false");
+  }
   if (canSubmit == "false") {
+    e.preventDefault();
     return false;
   }
   else {
@@ -72,7 +89,7 @@ modalForm.addEventListener("submit", (e) => {
 });
 
 // call editNav to open the nav from the icon
-iconNav.addEventListener("click", editNav).preventDefault();
+iconNav.addEventListener("click", editNav);
 
 // make the icon appear if the conditions are filled and display the icon is clicked on
 function editNav() {

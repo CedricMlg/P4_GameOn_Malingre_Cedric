@@ -74,6 +74,7 @@ img {
   font-size: 28px;
   color: #ff0000;
   background-color: white;
+  cursor: pointer;
 }
 
 @media screen and (max-width: 768px) {
