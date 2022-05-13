@@ -3,6 +3,7 @@ const modalForm = document.getElementById("inscription");
 const modalbg = document.querySelector(".bground");
 const modalBtn = document.querySelectorAll(".modal-btn");
 const modalClose = document.querySelectorAll(".close");
+const iconNav = document.getElementById("iconNav");
 const formData = document.querySelector(".formData");
 const formPrenom = document.getElementById("formFirst");
 const formNom = document.getElementById("formLast");
@@ -11,10 +12,10 @@ const formDate = document.getElementById("formBirthdate");
 const formParticipe = document.getElementById("formQuantity");
 
 // launch modal event
-modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
+modalBtn.forEach((launchBtn) => launchBtn.addEventListener("click", launchModal));
 
 // close modal event
-modalClose.forEach((btn) => btn.addEventListener("click", closeModal));
+modalClose.forEach((closeBtn) => closeBtn.addEventListener("click", closeModal));
 
 // launch modal form
 function launchModal() {
@@ -26,12 +27,8 @@ function closeModal() {
   modalbg.style.display = "none";
 }
 
-// message de validation formulaire
+// check if every field of input is correctly filled, allow to send the form if everything is ok, return and hollow the error whern there is one
 modalForm.addEventListener("submit", (e) => {
-
-  // erreur.innerText = "Veuillez renseigner correctement les inforamtions demandés";
-  // formData.dataset.errorVisible.innerHTML = "true";
-  // alert("Inscription validée !");
   let prenom = document.getElementById("first").value;
   let nom = document.getElementById("last").value;
   let email = document.getElementById("email").value;
@@ -74,6 +71,10 @@ modalForm.addEventListener("submit", (e) => {
   }
 });
 
+// call editNav to open the nav from the icon
+iconNav.addEventListener("click", editNav).preventDefault();
+
+// make the icon appear if the conditions are filled and display the icon is clicked on
 function editNav() {
   let x = document.getElementById("myTopnav");
   if (x.className === "topnav") {
