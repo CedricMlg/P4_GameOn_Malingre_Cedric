@@ -33,8 +33,8 @@ modalForm.addEventListener("submit", (e) => {
   let nom = document.getElementById("last").value;
   let email = document.getElementById("email").value;
   let date = document.getElementById("birthdate").value;
-  const mailReg = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
   let participe = document.getElementById("quantity").value;
+  const mailReg = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
   let erreur = document.getElementById("erreur");
   canSubmit = "true";
   if (prenom.length < 2) {
@@ -47,18 +47,19 @@ modalForm.addEventListener("submit", (e) => {
   else {
     formPrenom.setAttribute("data-error-visible", "false");
   }
-  if (nom.length < 4) {
-    alert("Veuillez renseigner un nom de plus de trois caractères.");
+  if (nom.length < 2) {
+    alert("Veuillez renseigner un nom de plus de deux caractères.");
     formNom.setAttribute("data-error-visible", "true");
     canSubmit = "false";
   }
   else {
     formNom.setAttribute("data-error-visible", "false");
   }
-  if (email.length < 1 || email.match(mailReg)) {
+  if (email == "" || email.match(mailReg)) {
     alert("Veuillez renseigner une adresse email valide.");
     formMail.setAttribute("data-error-visible", "true");
     canSubmit = "false";
+    console.log(email);
   }
   else {
     formMail.setAttribute("data-error-visible", "false");
@@ -71,7 +72,7 @@ modalForm.addEventListener("submit", (e) => {
   else {
     formDate.setAttribute("data-error-visible", "false");
   }
-  if (isNaN(participe) || participe < 0 || participe > 99) {
+  if (isNaN(participe) || participe == "" || participe < 0 || participe > 99) {
     alert("Veuillez renseigner un nombre de participations entre 0 et 99.");
     formParticipe.setAttribute("data-error-visible", "true");
     canSubmit = "false";
