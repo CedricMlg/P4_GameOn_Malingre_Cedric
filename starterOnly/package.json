@@ -2,7 +2,7 @@
     "name": "p4gameon",
     "version": "1.0.0",
     "description": "",
-    "main": "modal.js",
+    "main": "./public/js/modal.js",
     "scripts": {
         "test": "...",
         "build": "webpack"

@@ -37,6 +37,7 @@ modalForm.addEventListener("submit", (e) => {
   const mailReg = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
   let erreur = document.getElementById("erreur");
   canSubmit = "true";
+  
   if (prenom.length < 2) {
     e.preventDefault();
     alert("Veuillez renseigner un prenom de plus de deux caractères.");
@@ -47,6 +48,7 @@ modalForm.addEventListener("submit", (e) => {
   else {
     formPrenom.setAttribute("data-error-visible", "false");
   }
+
   if (nom.length < 2) {
     alert("Veuillez renseigner un nom de plus de deux caractères.");
     formNom.setAttribute("data-error-visible", "true");
@@ -55,6 +57,7 @@ modalForm.addEventListener("submit", (e) => {
   else {
     formNom.setAttribute("data-error-visible", "false");
   }
+
   if (email == "" || email.match(mailReg)) {
     alert("Veuillez renseigner une adresse email valide.");
     formMail.setAttribute("data-error-visible", "true");
@@ -64,6 +67,7 @@ modalForm.addEventListener("submit", (e) => {
   else {
     formMail.setAttribute("data-error-visible", "false");
   }
+
   if (date == "") {
     alert("Veuillez renseigner votre date de naissance");
     formDate.setAttribute("data-error-visible", "true");
@@ -72,6 +76,7 @@ modalForm.addEventListener("submit", (e) => {
   else {
     formDate.setAttribute("data-error-visible", "false");
   }
+
   if (isNaN(participe) || participe == "" || participe < 0 || participe > 99) {
     alert("Veuillez renseigner un nombre de participations entre 0 et 99.");
     formParticipe.setAttribute("data-error-visible", "true");
@@ -80,6 +85,7 @@ modalForm.addEventListener("submit", (e) => {
   else {
     formParticipe.setAttribute("data-error-visible", "false");
   }
+
   if (canSubmit == "false") {
     e.preventDefault();
     return false;
