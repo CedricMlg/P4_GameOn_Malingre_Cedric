@@ -7,10 +7,15 @@ class Form {
     this.participe = participations;
     this.formData = document.querySelector(".formData");
     this.formPrenom = document.getElementById("formFirst");
+    this.alertPrenom = document.getElementById("formFAlert");
     this.formNom = document.getElementById("formLast");
+    this.alertNom = document.getElementById("formLAlert");
     this.formMail = document.getElementById("formEmail");
+    this.alertEmail = document.getElementById("formEAlert");
     this.formDate = document.getElementById("formBirthdate");
+    this.alertAnniversaire = document.getElementById("formBAlert");
     this.formParticipe = document.getElementById("formQuantity");
+    this.alertParticipation = document.getElementById("formQAlert");
     this.canSubmit = true;
   }
   checkForm(e) {
@@ -19,7 +24,7 @@ class Form {
 
     if (this.prenom.length < 2) {
       e.preventDefault();
-      alert("Veuillez renseigner un prenom de plus de deux caractères.");
+      this.alertPrenom.innerHTML = "Veuillez renseigner un prenom de plus de deux caractères.";
       erreur.innerHTML =
         "Veuillez renseigner correctement les inforamtions demandés";
         this.formPrenom.setAttribute("data-error-visible", "true");
@@ -29,7 +34,7 @@ class Form {
     }
 
     if (this.nom.length < 2) {
-      alert("Veuillez renseigner un nom de plus de deux caractères.");
+      this.alertNom.innerHTML = "Veuillez renseigner un nom de plus de deux caractères.";
       this.formNom.setAttribute("data-error-visible", "true");
       this.canSubmit = false;
     } else {
@@ -37,7 +42,7 @@ class Form {
     }
 
     if (this.email == "" || this.email.match(mailReg)) {
-      alert("Veuillez renseigner une adresse email valide.");
+      this.alertEmail.innerHTML = "Veuillez renseigner une adresse email valide.";
       this.formMail.setAttribute("data-error-visible", "true");
       this.canSubmit = false;
       console.log(email);
@@ -46,7 +51,7 @@ class Form {
     }
 
     if (this.date == "") {
-      alert("Veuillez renseigner votre date de naissance");
+      this.alertAnniversaire.innerHTML = "Veuillez renseigner votre date de naissance";
       this.formDate.setAttribute("data-error-visible", "true");
       this.canSubmit = false;
     } else {
@@ -59,7 +64,7 @@ class Form {
       this.participe < 0 ||
       this.participe > 99
     ) {
-      alert("Veuillez renseigner un nombre de participations entre 0 et 99.");
+      this.alertParticipation.innerHTML = "Veuillez renseigner un nombre de participations entre 0 et 99.";
       this.formParticipe.setAttribute("data-error-visible", "true");
       this.canSubmit = false;
     } else {
