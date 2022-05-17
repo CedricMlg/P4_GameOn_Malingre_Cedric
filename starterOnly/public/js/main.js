@@ -24,15 +24,22 @@ function closeModal() {
 }
 
 // check if every field of input is correctly filled, allow to send the form if everything is ok, return and hollow the error whern there is one
-modalForm.addEventListener("submit", (e) => {
+modalForm.addEventListener("submit", (envoi) => {
   let prenom = document.getElementById("first").value;
   let nom = document.getElementById("last").value;
   let email = document.getElementById("email").value;
   let date = document.getElementById("birthdate").value;
   let participe = document.getElementById("quantity").value;
-  let form = new Form (prenom, nom, email, date, participe) 
-  form.checkForm(e);
-
+  let form = new Form (prenom, nom, email, date, participe)
+  form.checkForm(envoi);
+  form.checkPrenom();
+  form.checkNom();
+  form.checkEmail();
+  form.checkDate();
+  form.checkParticipation();
+  // form.then((envoiValid) => {
+  //   form.checkValid(envoiValid)
+  // });
 });
 
 // call editNav to open the nav from the icon

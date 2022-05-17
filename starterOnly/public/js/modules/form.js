@@ -16,68 +16,94 @@ class Form {
     this.alertAnniversaire = document.getElementById("formBAlert");
     this.formParticipe = document.getElementById("formQuantity");
     this.alertParticipation = document.getElementById("formQAlert");
+    this.dataError = this.formData.getAttribute("data-error-visible")
     this.canSubmit = true;
   }
-  checkForm(e) {
-    const mailReg = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
-    let erreur = document.getElementById("erreur");
 
+    async checkData(envoi){
+    envoi.preventDefault();
+    const cP = await this.checkPrenom();
+    const cN = await this.checkNom();
+    const cE = await this.checkEmail();
+    const cD = await this.checkDate();
+    const cPa = await this.checkParticipation();
+    return cP + cN + cE + cD + cPa;
+  }
+
+  async checkPrenom(){
     if (this.prenom.length < 2) {
-      e.preventDefault();
-      this.alertPrenom.innerHTML = "Veuillez renseigner un prenom de plus de deux caractères.";
-      erreur.innerHTML =
-        "Veuillez renseigner correctement les inforamtions demandés";
-        this.formPrenom.setAttribute("data-error-visible", "true");
-        this.canSubmit = false;
+      this.alertPrenom.innerHTML =
+        "Veuillez renseigner un prenom de plus de deux caractères.";
+      this.formPrenom.setAttribute("data-error-visible", "true");
+      this.canSubmit = false;
     } else {
       this.formPrenom.setAttribute("data-error-visible", "false");
     }
+  }
 
+  async checkNom(){
     if (this.nom.length < 2) {
-      this.alertNom.innerHTML = "Veuillez renseigner un nom de plus de deux caractères.";
+      this.alertNom.innerHTML =
+        "Veuillez renseigner un nom de plus de deux caractères.";
       this.formNom.setAttribute("data-error-visible", "true");
       this.canSubmit = false;
     } else {
       this.formNom.setAttribute("data-error-visible", "false");
     }
+  }
 
+  async checkEmail(){
+    const mailReg = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
     if (this.email == "" || this.email.match(mailReg)) {
-      this.alertEmail.innerHTML = "Veuillez renseigner une adresse email valide.";
+      this.alertEmail.innerHTML =
+        "Veuillez renseigner une adresse email valide.";
       this.formMail.setAttribute("data-error-visible", "true");
       this.canSubmit = false;
       console.log(email);
     } else {
       this.formMail.setAttribute("data-error-visible", "false");
     }
+  }
 
+  async checkDate(){
     if (this.date == "") {
-      this.alertAnniversaire.innerHTML = "Veuillez renseigner votre date de naissance";
+      this.alertAnniversaire.innerHTML =
+        "Veuillez renseigner votre date de naissance";
       this.formDate.setAttribute("data-error-visible", "true");
       this.canSubmit = false;
     } else {
       this.formDate.setAttribute("data-error-visible", "false");
     }
+  }
 
+  async checkParticipation(){
     if (
       isNaN(this.participe) ||
       this.participe == "" ||
       this.participe < 0 ||
       this.participe > 99
     ) {
-      this.alertParticipation.innerHTML = "Veuillez renseigner un nombre de participations entre 0 et 99.";
+      this.alertParticipation.innerHTML =
+        "Veuillez renseigner un nombre de participations entre 0 et 99.";
       this.formParticipe.setAttribute("data-error-visible", "true");
       this.canSubmit = false;
     } else {
       this.formParticipe.setAttribute("data-error-visible", "false");
     }
-
-    if (this.canSubmit == false) {
-      e.preventDefault();
-      return false;
-    } else {
-      alert("Inscription validée !");
-    }
   }
+
+  // checkValid(envoiValid) {
+  //   let erreur = document.getElementById("erreur");
+  //   if (this.canSubmit == false) {
+  //     envoiValid.preventDefault();
+  //     erreur.innerHTML =
+  //     "Veuillez renseigner correctement les inforamtions demandés";
+  //     console.log(this.dataError);
+  //     return false;
+  //   } else {
+  //     alert("Inscription validée !");
+  //   }
+  // }
 }
 
 export { Form };
