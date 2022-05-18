@@ -29,7 +29,6 @@ function closeModal() {
 
 // check if every field of input is correctly filled, allow to send the form if everything is ok, return and hollow the error whern there is one
 modalForm.addEventListener("submit", (envoi) => {
-  envoi.preventDefault();
   let prenom = document.getElementById("first").value;
   let nom = document.getElementById("last").value;
   let email = document.getElementById("email").value;
@@ -39,7 +38,7 @@ modalForm.addEventListener("submit", (envoi) => {
   form.checkData(envoi);
   form.checkPrenom();
   form.checkNom();
-  form.checkEmail();
+  // form.checkEmail();
   form.checkDate();
   form.checkParticipation();
   form.checkData(envoi).then((envoiValid) => {

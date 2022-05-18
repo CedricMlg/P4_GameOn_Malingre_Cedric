@@ -21,12 +21,11 @@ class Form {
 
   async checkData(envoi) {
     envoi.preventDefault();
-    const cP = await this.checkPrenom();
-    const cN = await this.checkNom();
-    const cE = await this.checkEmail();
-    const cD = await this.checkDate();
-    const cPa = await this.checkParticipation();
-    return cP + cN + cE + cD + cPa;
+    await this.checkPrenom();
+    await this.checkNom();
+    await this.checkEmail();
+    await this.checkDate();
+    await this.checkParticipation();
   }
 
   async checkPrenom() {
@@ -62,7 +61,6 @@ class Form {
         "Veuillez renseigner une adresse email valide.";
       this.formMail.setAttribute("data-error-visible", "true");
       this.canSubmit = false;
-      console.log(email);
     } else {
       this.formMail.setAttribute("data-error-visible", "false");
       this.alertEmail.innerHTML =
@@ -102,18 +100,29 @@ class Form {
   }
 
   checkValid(envoiValid) {
-    // let dataError = this.formData.getAttribute("data-error-visible");
     let erreur = document.getElementById("erreur");
-    this.formData.forEach(formData => console.log(formData.getAttribute('data-error-visible')));
-    // if (this.canSubmit == false) {
-    //   envoiValid.preventDefault();
-    //   erreur.innerHTML =
-    //   "Veuillez renseigner correctement les inforamtions demandés";
-    //   console.log(this.dataError);
-    //   return false;
-    // } else {
-    //   alert("Inscription validée !");
-    // }
+    let dataValid = this.formData.forEach(dataCheck =>  {
+      let dataValue = console.log(dataCheck.getAttribute('data-error-visible'));
+      if (dataValue == dataCheck.getAttribute('data-error-visible = "true"')) {
+        alert("oui");
+          return true;
+      } else {
+        alert("non");
+        return false;
+      }
+    });
+    console.log(dataValid)
+    // this.dataError = this.formData.forEach(dataError => {console.log(dataError.getAttribute('data-error-visible'))});
+    if (dataValid == true) {
+      // envoiValid.preventDefault();
+      // erreur.innerHTML =
+      // "Veuillez renseigner correctement les inforamtions demandés";
+      // console.log(this.dataError);
+      // return false;
+      alert("ratio");
+    } else {
+      alert("Inscription validée !");
+    }
   }
 }
 
