@@ -41,9 +41,11 @@ modalForm.addEventListener("submit", (envoi) => {
   // form.checkEmail();
   form.checkDate();
   form.checkParticipation();
-  form.checkData(envoi).then((envoiValid) => {
-    form.checkValid(envoiValid);
-  });
+  form.checkRadio();
+  form.checkConditions();
+  // form.checkData(envoi).then((envoiValid) => {
+  //   form.checkValid(envoiValid);
+  // });
 });
 
 // call editNav to open the nav from the icon

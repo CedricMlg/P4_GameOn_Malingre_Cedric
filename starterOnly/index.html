@@ -124,7 +124,9 @@
               </div>
               <p class="text-label">A quel tournoi souhaitez-vous participer cette année ?</p>
               <div
-                <!--class="formData">-->
+                class="formData"
+                id="formRadio"
+                data-error-visible="">
                 <input
                   class="checkbox-input"
                   type="radio"
@@ -191,15 +193,17 @@
                   <span class="checkbox-icon"></span>
                   Portland</label
                 >
+                <p class="msg-alert" id="formRAlert"></p>
               </div>
 
               <div
-                <!--class="formData">-->
+                class="formData"
+                id="formCheck"
+                data-error-visible="">
                 <input
                   class="checkbox-input"
                   type="checkbox"
                   id="checkbox1"
-                  checked
                 />
                 <label class="checkbox2-label" for="checkbox1" required>
                   <span class="checkbox-icon"></span>
@@ -213,7 +217,7 @@
                 </label>
                 <br>
               </div>
-              <p id="erreur"></p>
+              <p class="msg-alert" id="formCAlert"></p>
               <input
                 class="btn-submit"
                 type="submit"
