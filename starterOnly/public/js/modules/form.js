@@ -97,40 +97,15 @@ class Form {
   }
 
   async checkRadio() {
-    // let radioValid = this.radioName.forEach(ifRadioChecked =>  {
-    //   if (ifRadioChecked.checked) {
-    //     console.log("non")
-    //       return false;
-    //   } else {
-    //     console.log("oui")
-    //     return true;
-    //   }
-    // });
     let radioValid = function () {
-      let radioName = document.getElementsByName("location");
-      console.log(radioName.length);
-      for (let i = 0; i < radioName.length; i++) {
-        console.log(i);
-        if (radioName[i].checked == true) {
-          console.log("oui");
-          return false;
-        } else {
-          console.log("non");
-          return true;
-        }
+      let radioName = document.querySelector("[name='location']:checked");
+      if(radioName != null){  //Test if something was checked
+        return true;
+      } else {
+        return false;
       }
     };
-    //   let isSelected = function() {
-    //     let radioObj = document.formData.location;
 
-    //     for(let i=0; i<radioObj.length; i++) {
-    //         if( radioObj[i].checked ) {
-    //             return true;
-    //         }
-    //     }
-
-    //     return false;
-    // };
     if (!radioValid()) {
       this.alertRadio.innerHTML =
         "Veuillez selectionner le tournois auquel vous souhaitez participer";
@@ -152,28 +127,28 @@ class Form {
     }
   }
 
-  // checkValid(envoiValid) {
-  //   let dataValid = this.formData.forEach(dataCheck =>  {
-  //     let dataValue = dataCheck.getAttribute('data-error-visible');
-  //     if (dataValue == dataCheck.getAttribute('data-error-visible = "true"')) {
-  //       alert("oui");
-  //         return true;
-  //     } else {
-  //       alert("non");
-  //       return false;
-  //     }
-  //   });
-  //   // console.log(dataCheck)
-  //   // this.dataError = this.formData.forEach(dataError => {console.log(dataError.getAttribute('data-error-visible'))});
-  //   if (!dataValid) {
-  //     // envoiValid.preventDefault();
-  //     // console.log(this.dataError);
-  //     // return false;
-  //     alert("ratio");
-  //   } else {
-  //     alert("Inscription validée !");
-  //   }
-  // }
+  checkValid(envoiValid) {
+    let found = false;
+    this.formData.forEach(dataCheck =>  {
+      let dataValue = dataCheck.getAttribute('data-error-visible');
+      if (dataValue == dataCheck.getAttribute('data-error-visible = "true"')) {
+        alert("oui");
+          found = true;
+      } else {
+        alert("non");
+      }
+    });
+    // console.log(dataCheck)
+    // this.dataError = this.formData.forEach(dataError => {console.log(dataError.getAttribute('data-error-visible'))});
+    if (!found) {
+      // envoiValid.preventDefault();
+      // console.log(this.dataError);
+      // return false;
+      alert("ratio");
+    } else {
+      alert("Inscription validée !");
+    }
+  }
 }
 
 export { Form };

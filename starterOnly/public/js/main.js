@@ -34,6 +34,7 @@ modalForm.addEventListener("submit", (envoi) => {
   let email = document.getElementById("email").value;
   let date = document.getElementById("birthdate").value;
   let participe = document.getElementById("quantity").value;
+  let radioName = document.getElementsByName("location");
   let form = new Form(prenom, nom, email, date, participe);
   form.checkData(envoi);
   form.checkPrenom();
@@ -43,9 +44,9 @@ modalForm.addEventListener("submit", (envoi) => {
   form.checkParticipation();
   form.checkRadio();
   form.checkConditions();
-  // form.checkData(envoi).then((envoiValid) => {
-  //   form.checkValid(envoiValid);
-  // });
+  form.checkData(envoi).then((envoiValid) => {
+    form.checkValid(envoiValid);
+  });
 });
 
 // call editNav to open the nav from the icon
