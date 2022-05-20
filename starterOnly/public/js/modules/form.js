@@ -128,26 +128,40 @@ class Form {
   }
 
   checkValid(envoiValid) {
-    let found = false;
-    this.formData.forEach(dataCheck =>  {
+    let found = "false";
+    let dataValid = this.formData.forEach(dataCheck =>  {
       let dataValue = dataCheck.getAttribute('data-error-visible');
-      if (dataValue == dataCheck.getAttribute('data-error-visible = "true"')) {
+      if (dataValue == "false") {
         alert("oui");
-          found = true;
+          found = "true";
       } else {
         alert("non");
       }
+      let data = (e) => console.log(dataValue.every(found));
+      return found;
     });
-    // console.log(dataCheck)
+    // console.log(found);
+    // console.log(dataValid)
+
+    // let dataValid = this.formData.forEach(dataCheck =>  {
+    //   let dataValue = dataCheck.getAttribute('data-error-visible');
+    //   console.log(dataValue);
+    // });
+    // let dataValid = (dataCheck) => dataCheck = "false";
+    // let dataValue = this.formData.getAttribute('data-error-visible');
+      // formData = document.querySelectorAll("div.formData");
+      // let dataValue = dataCheck.getAttribute('data-error-visible');
+      // console.log(dataValue.every())
+    // console.log(dataValue.every(dataValid));
     // this.dataError = this.formData.forEach(dataError => {console.log(dataError.getAttribute('data-error-visible'))});
-    if (!found) {
-      // envoiValid.preventDefault();
-      // console.log(this.dataError);
-      // return false;
-      alert("ratio");
-    } else {
-      alert("Inscription validée !");
-    }
+    // if (!found) {
+    //   // envoiValid.preventDefault();
+    //   // console.log(this.dataError);
+    //   // return false;
+    //   alert("ratio");
+    // } else {
+    //   alert("Inscription validée !");
+    // }
   }
 }
 
