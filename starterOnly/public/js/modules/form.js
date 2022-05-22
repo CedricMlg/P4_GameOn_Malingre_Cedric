@@ -99,7 +99,8 @@ class Form {
   async checkRadio() {
     let radioValid = function () {
       let radioName = document.querySelector("[name='location']:checked");
-      if(radioName != null){  //Test if something was checked
+      if (radioName != null) {
+        //Test if something was checked
         return true;
       } else {
         return false;
@@ -129,11 +130,11 @@ class Form {
 
   checkValid(envoiValid) {
     let found = "false";
-    let dataValid = this.formData.forEach(dataCheck =>  {
-      let dataValue = dataCheck.getAttribute('data-error-visible');
+    let dataValid = this.formData.forEach((dataCheck) => {
+      let dataValue = dataCheck.getAttribute("data-error-visible");
       if (dataValue == "false") {
         alert("oui");
-          found = "true";
+        found = "true";
       } else {
         alert("non");
       }
@@ -149,9 +150,9 @@ class Form {
     // });
     // let dataValid = (dataCheck) => dataCheck = "false";
     // let dataValue = this.formData.getAttribute('data-error-visible');
-      // formData = document.querySelectorAll("div.formData");
-      // let dataValue = dataCheck.getAttribute('data-error-visible');
-      // console.log(dataValue.every())
+    // formData = document.querySelectorAll("div.formData");
+    // let dataValue = dataCheck.getAttribute('data-error-visible');
+    // console.log(dataValue.every())
     // console.log(dataValue.every(dataValid));
     // this.dataError = this.formData.forEach(dataError => {console.log(dataError.getAttribute('data-error-visible'))});
     // if (!found) {
