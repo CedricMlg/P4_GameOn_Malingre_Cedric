@@ -56,18 +56,18 @@ class Form {
     }
   }
 
-  // async checkEmail() {
-  //   const mailReg = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
-  //   if (this.email == "" || this.email.match(mailReg)) {
-  //     this.alertEmail.innerHTML =
-  //       "Veuillez renseigner une adresse email valide.";
-  //     this.formMail.setAttribute("data-error-visible", "true");
-  //   } else {
-  //     this.formMail.setAttribute("data-error-visible", "false");
-  //     this.alertEmail.innerHTML =
-  //     "";
-  //   }
-  // }
+  async checkEmail() {
+    const mailReg =
+      /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    if (this.email == "" || mailReg.test(this.email)) {
+      this.alertEmail.innerHTML =
+        "Veuillez renseigner une adresse email valide.";
+      this.formMail.setAttribute("data-error-visible", "true");
+    } else {
+      this.formMail.setAttribute("data-error-visible", "false");
+      this.alertEmail.innerHTML = "";
+    }
+  }
 
   async checkDate() {
     if (this.date == "") {
@@ -129,40 +129,22 @@ class Form {
   }
 
   checkValid(envoiValid) {
-    let found = "false";
+    let found = false;
     let dataValid = this.formData.forEach((dataCheck) => {
       let dataValue = dataCheck.getAttribute("data-error-visible");
       if (dataValue == "false") {
-        alert("oui");
-        found = "true";
-      } else {
-        alert("non");
+        found = true;
       }
-      let data = (e) => console.log(dataValue.every(found));
       return found;
     });
-    // console.log(found);
-    // console.log(dataValid)
+    console.log(found);
 
-    // let dataValid = this.formData.forEach(dataCheck =>  {
-    //   let dataValue = dataCheck.getAttribute('data-error-visible');
-    //   console.log(dataValue);
-    // });
-    // let dataValid = (dataCheck) => dataCheck = "false";
-    // let dataValue = this.formData.getAttribute('data-error-visible');
-    // formData = document.querySelectorAll("div.formData");
-    // let dataValue = dataCheck.getAttribute('data-error-visible');
-    // console.log(dataValue.every())
-    // console.log(dataValue.every(dataValid));
-    // this.dataError = this.formData.forEach(dataError => {console.log(dataError.getAttribute('data-error-visible'))});
-    // if (!found) {
-    //   // envoiValid.preventDefault();
-    //   // console.log(this.dataError);
-    //   // return false;
-    //   alert("ratio");
-    // } else {
-    //   alert("Inscription validée !");
-    // }
+    if (!found) {
+      alert("erreur");
+      return false;
+    } else {
+      alert("Inscription validée !");
+    }
   }
 }
 

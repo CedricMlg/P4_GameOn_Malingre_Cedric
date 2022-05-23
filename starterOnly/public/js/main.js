@@ -39,7 +39,7 @@ modalForm.addEventListener("submit", (envoi) => {
   form.checkData(envoi);
   form.checkPrenom();
   form.checkNom();
-  // form.checkEmail();
+  form.checkEmail();
   form.checkDate();
   form.checkParticipation();
   form.checkRadio();
