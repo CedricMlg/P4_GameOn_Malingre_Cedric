@@ -27,7 +27,7 @@ class Form {
     envoi.preventDefault();
     await this.checkPrenom();
     await this.checkNom();
-    // await this.checkEmail();
+    await this.checkEmail();
     await this.checkDate();
     await this.checkParticipation();
     await this.checkRadio();
@@ -35,111 +35,97 @@ class Form {
   }
 
   async checkPrenom() {
-    if (this.prenom.length < 2) {
-      this.alertPrenom.innerHTML =
-        "Veuillez renseigner un prenom de plus de deux caractères.";
-      this.formPrenom.setAttribute("data-error-visible", "true");
-    } else {
-      this.formPrenom.setAttribute("data-error-visible", "false");
-      this.alertPrenom.innerHTML = "";
-    }
+    let condition = this.prenom.length > 2;
+    let alert =  this.alertPrenom;
+    let input = this.formPrenom;
+    let textError =
+      "Veuillez renseigner un prenom de plus de deux caractères.";
+
+    this.controlInput(condition, alert, input, textError);
   }
 
   async checkNom() {
-    if (this.nom.length < 2) {
-      this.alertNom.innerHTML =
-        "Veuillez renseigner un nom de plus de deux caractères.";
-      this.formNom.setAttribute("data-error-visible", "true");
-    } else {
-      this.formNom.setAttribute("data-error-visible", "false");
-      this.alertNom.innerHTML = "";
-    }
+    let condition = this.nom.length > 2;
+    let alert = this.alertNom;
+    let input = this.formNom;
+    let textError =
+      "Veuillez renseigner un nom de plus de deux caractères.";
+
+    this.controlInput(condition, alert, input, textError);
   }
 
   async checkEmail() {
-    const mailReg =
-      /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-    if (this.email == "" || mailReg.test(this.email)) {
-      this.alertEmail.innerHTML =
-        "Veuillez renseigner une adresse email valide.";
-      this.formMail.setAttribute("data-error-visible", "true");
-    } else {
-      this.formMail.setAttribute("data-error-visible", "false");
-      this.alertEmail.innerHTML = "";
-    }
+    const mailReg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+    let condition = this.email != "" && mailReg.test(this.email);
+    let alert = this.alertEmail;
+    let input = this.formMail;
+    let textError =
+      "Veuillez renseigner une adresse email valide.";
+
+    this.controlInput(condition, alert, input, textError);
   }
 
   async checkDate() {
-    if (this.date == "") {
-      this.alertAnniversaire.innerHTML =
-        "Veuillez renseigner votre date de naissance";
-      this.formDate.setAttribute("data-error-visible", "true");
-    } else {
-      this.formDate.setAttribute("data-error-visible", "false");
-      this.alertAnniversaire.innerHTML = "";
-    }
+    let condition = this.date != ""
+    let alert = this.alertAnniversaire;
+    let input = this.formDate;
+    let textError =
+      "Veuillez renseigner votre date de naissance.";
+
+    this.controlInput(condition, alert, input, textError);
   }
 
   async checkParticipation() {
-    if (
-      isNaN(this.participe) ||
-      this.participe == "" ||
-      this.participe < 0 ||
-      this.participe > 99
-    ) {
-      this.alertParticipation.innerHTML =
-        "Veuillez renseigner un nombre de participations entre 0 et 99.";
-      this.formParticipe.setAttribute("data-error-visible", "true");
-    } else {
-      this.formParticipe.setAttribute("data-error-visible", "false");
-      this.alertParticipation.innerHTML = "";
-    }
+    let condition =
+      this.participe != "" && this.participe > 0 && this.participe < 99;
+    let alert = this.alertParticipation;
+    let input = this.formParticipe;
+    let textError =
+      "Veuillez renseigner un nombre de participations entre 0 et 99.";
+
+    this.controlInput(condition, alert, input, textError);
   }
 
   async checkRadio() {
-    let radioValid = function () {
-      let radioName = document.querySelector("[name='location']:checked");
-      if (radioName != null) {
-        //Test if something was checked
-        return true;
-      } else {
-        return false;
-      }
-    };
+    let radioName = document.querySelector("[name='location']:checked");
+    let condition = radioName != null;
+    let alert = this.alertRadio;
+    let input = this.formRadio;
+    let textError =
+      "Veuillez selectionner le tournois auquel vous souhaitez participer.";
 
-    if (!radioValid()) {
-      this.alertRadio.innerHTML =
-        "Veuillez selectionner le tournois auquel vous souhaitez participer";
-      this.formRadio.setAttribute("data-error-visible", "true");
-    } else {
-      this.formRadio.setAttribute("data-error-visible", "false");
-      this.alertRadio.innerHTML = "";
-    }
+    this.controlInput(condition, alert, input, textError);
   }
 
   async checkConditions() {
-    if (this.formCheckbox1.checked == false) {
-      this.alertCheck.innerHTML =
-        "Veuillez accepter les conditions d'utilisation avant de vous inscrire";
-      this.formCheck.setAttribute("data-error-visible", "true");
+    let condition = this.formCheckbox1.checked;
+    let alert = this.alertCheck;
+    let input = this.formCheck;
+    let textError =
+      "Veuillez accepter les conditions d'utilisation avant de vous inscrire.";
+
+    this.controlInput(condition, alert, input, textError);
+  }
+
+  controlInput(condition, alert, input, txtError) {
+    if (condition == false) {
+      alert.innerHTML = txtError;
+      input.setAttribute("data-error-visible", "true");
     } else {
-      this.formCheck.setAttribute("data-error-visible", "false");
-      this.alertCheck.innerHTML = "";
+      input.setAttribute("data-error-visible", "false");
+      alert.innerHTML = "";
     }
   }
 
   checkValid(envoiValid) {
-    let found = false;
-    let dataValid = this.formData.forEach((dataCheck) => {
-      let dataValue = dataCheck.getAttribute("data-error-visible");
-      if (dataValue == "false") {
-        found = true;
-      }
-      return found;
-    });
-    console.log(found);
+    const isValid = (input) =>
+      input.getAttribute("data-error-visible") === "false";
 
-    if (!found) {
+    let inputArray = Array.from(this.formData);
+
+    let formValid = inputArray.every(isValid);
+
+    if (!formValid) {
       alert("erreur");
       return false;
     } else {
