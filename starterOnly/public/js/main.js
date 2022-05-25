@@ -27,7 +27,7 @@ function closeModal() {
   modalbg.style.display = "none";
 }
 
-// check if every field of input is correctly filled, allow to send the form if everything is ok, return and hollow the error whern there is one
+// check if every field of input is correctly filled, allow to send the form if everything is ok, return and hollow the error where there is one
 modalForm.addEventListener("submit", (envoi) => {
   let prenom = document.getElementById("first").value;
   let nom = document.getElementById("last").value;

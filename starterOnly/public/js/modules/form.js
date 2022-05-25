@@ -107,6 +107,7 @@ class Form {
     this.controlInput(condition, alert, input, textError);
   }
 
+  // That's a template that gets the parameters stored in the variables of each "check(x)" method to build, check the conditions and then do something
   controlInput(condition, alert, input, txtError) {
     if (condition == false) {
       alert.innerHTML = txtError;
@@ -118,6 +119,7 @@ class Form {
   }
 
   checkValid(envoiValid) {
+    // Get every data error with the "false" value
     const isValid = (input) =>
       input.getAttribute("data-error-visible") === "false";
 
@@ -126,10 +128,9 @@ class Form {
     let formValid = inputArray.every(isValid);
 
     if (!formValid) {
-      alert("erreur");
       return false;
     } else {
-      alert("Inscription validée !");
+      alert("Votre inscription à bien été validée !");
     }
   }
 }
