@@ -219,7 +219,8 @@ main {
 .msgInscritpion {
   font-weight: normal;
   text-align: center;
-  height: 400px;
+  margin-top: 200px;
+  margin-bottom: 200px;
   font-size: 34px;
   display: flex;
   align-items: center;
