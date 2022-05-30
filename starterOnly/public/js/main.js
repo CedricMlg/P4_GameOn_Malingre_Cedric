@@ -4,6 +4,8 @@ import { Form } from "./modules/form.js";
 const modalForm = document.getElementById("inscription");
 const modalbg = document.querySelector(".bground");
 const modalBtn = document.querySelectorAll(".modal-btn");
+// const modalBody = document.querySelector(".modal-body");
+// const modalAlert = document.querySelector(".submitAlert");
 const modalClose = document.querySelectorAll(".close");
 const iconNav = document.getElementById("iconNav");
 
