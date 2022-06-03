@@ -5,6 +5,7 @@ class Form {
     this.email = email;
     this.date = anniversaire;
     this.participe = participations;
+    this.modalForm = document.getElementById("inscription");
     this.formData = document.querySelectorAll("div.formData");
     this.formPrenom = document.getElementById("formFirst");
     this.alertPrenom = document.getElementById("formFAlert");
@@ -79,7 +80,7 @@ class Form {
 
   async checkParticipation() {
     let condition =
-      this.participe != "" && this.participe > 0 && this.participe < 99;
+      this.participe != "" && this.participe >= 0 && this.participe < 99;
     let alert = this.alertParticipation;
     let input = this.formParticipe;
     let textError =
@@ -134,6 +135,7 @@ class Form {
     } else {
       this.modalBody.style.display = "none";
       this.modalAlert.style.display = "block";
+      this.modalForm.reset();
     }
   }
 }

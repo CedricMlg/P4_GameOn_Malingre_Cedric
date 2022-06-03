@@ -44,6 +44,19 @@ img {
   float: right;
   height: 100%;
 }
+
+.open {
+  float: left;
+  display: block;
+  color: #000000;
+  text-align: center;
+  padding: 12px 12px;
+  margin: 5px;
+  text-decoration: none;
+  font-size: 20px;
+  font-family: Roboto, sans-serif;
+}
+
 .topnav a {
   float: left;
   display: block;
@@ -62,11 +75,11 @@ img {
   border-radius: 15px;
 }
 
-.topnav a.active {
+/* .topnav a.active {
   background-color: #ff0000;
   color: #ffffff;
   border-radius: 15px;
-}
+} */
 
 .topnav .icon {
   display: none;
@@ -75,6 +88,15 @@ img {
   color: #ff0000;
   background-color: white;
   cursor: pointer;
+}
+
+.icon {
+  border: none;
+  font-size: 28px;
+  color: #ff0000;
+  background-color: white;
+  cursor: pointer;
+  margin: 13px 0 0 13px;
 }
 
 @media screen and (max-width: 768px) {
@@ -513,6 +535,31 @@ footer {
   padding-right: 2vw;
   margin: 0 20px;
 }
+@media (max-width: 960px) and (min-width: 471px) {
+  .hero-headline {
+    font-size: 4.5rem;
+    white-space: normal;
+  }
+  .hero-text {
+    font-size: 1.5rem;
+    width: 100%;
+  }
+}
+@media screen and (max-width: 470px) {
+  .hero-content {
+    width: 100%;
+    min-width: auto;
+  }
+  .hero-headline {
+    font-size: 3rem;
+    white-space: normal;
+  }
+  .hero-text {
+    font-size: 1.5rem;
+    width: 100%;
+  }
+
+}
 @media screen and (max-width: 800px) {
   .hero-section {
     display: block;
@@ -528,14 +575,6 @@ footer {
   }
   .hero-content .btn-signup {
     display: none;
-  }
-  .hero-headline {
-    font-size: 4.5rem;
-    white-space: normal;
-  }
-  .hero-text {
-    width: unset;
-    font-size: 1.5rem;
   }
   .hero-img img {
     border-radius: 10px;
