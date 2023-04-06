@@ -9,7 +9,7 @@ To get a local copy up and running follow these simple example steps.
 
 1. Clone the repo
    ```sh
-   git clone https://github.com/CedricMlg/P14_WealthHealth_Malingre_Cedric
+   git clone https://github.com/CedricMlg/P4_GameOn_Malingre_Cedric
    ```
 2. Install packages
    ```sh
