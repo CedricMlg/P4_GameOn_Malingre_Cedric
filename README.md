@@ -11,11 +11,15 @@ To get a local copy up and running follow these simple example steps.
    ```sh
    git clone https://github.com/CedricMlg/P4_GameOn_Malingre_Cedric
    ```
-2. Install packages
+2. Place yourself on the project
+   ```sh
+   cd starterOnly/
+   ```
+3. Install packages
    ```sh
    npm install
    ```
-3. Get it running
+4. Get it running
    ```js
    If you're on VScode use "Go Live" to run live server, otherwise just open the index.html
    ```
